@@ -11,10 +11,11 @@ import matplotlib.colors as mcolors
 from evaluation.avalanche_criterion import avalanche_criterion
 from evaluation.fixed_points      import fixed_ponts
 from evaluation.uniformity         import get_ddt
+from evaluation.linearity         import evaluate
 from sboxes.loader                import load as load_sbox
 
 
-def get_metrics(specs: list[dict], non_linearities: list[float]) -> pd.DataFrame:
+def get_metrics(specs: list[dict]) -> pd.DataFrame:
     """
     Calcula métricas básicas para un conjunto de S-Boxes.
     """
@@ -25,7 +26,7 @@ def get_metrics(specs: list[dict], non_linearities: list[float]) -> pd.DataFrame
         max_ddt_ex0      = np.max(ddt_matrix[1:])      # ignoramos dx=0
         uniformity       = max_ddt_ex0
         fixed_points     = fixed_ponts(sbox, detail=True)[1]
-        non_lin          = non_linearities[i] if i < len(non_linearities) else None
+        non_lin          = evaluate(sbox)
         avg_sac,_,stds,max_std = avalanche_criterion(sbox)
 
         metrics.append({
@@ -75,9 +76,8 @@ def plot_metric_bars(df: pd.DataFrame,
 
 
 def run_all_metrics(specs: list[dict],
-                    non_linearities: list[float],
                     filename: str ="sbox_metrics_summary") -> pd.DataFrame:
-    df = get_metrics(specs, non_linearities)
+    df = get_metrics(specs)
 
     # 1) Tabla en consola
     print("\n=== Métricas de S-Boxes ===")
@@ -115,7 +115,5 @@ if __name__ == "__main__":
             'color': None,
             'sbox': sbox
         })
-
-    non_linearities = [12, 14, 16, 16]  # ejemplo, reemplaza con tus valores reales
-
-    run_all_metrics(specs, non_linearities)
+        
+    run_all_metrics(specs)

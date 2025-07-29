@@ -34,4 +34,4 @@ def fixed_ponts(sbox: SBox, square: bool = True, detail: bool = False):
 
     else:
         # Si square=False tu función original devolvía siempre False
-        return False
+        return True

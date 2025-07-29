@@ -34,14 +34,19 @@ def avalanche_criterion(sbox: SBox, detail: bool = False):
     sac_counts = np.zeros((n, m), dtype=int)
     N = 1 << n
 
+    def _parse(v):
+        # Interpreta strings hexadecimales o decimales, o convierte ints directamente
+        if isinstance(v, (str, np.str_)):
+            return int(v, 0)
+        else:
+            return int(v)
+
     for i in range(n):
         mask = 1 << i
         for x in range(N):
-            # Obtener salidas antes y después de voltear el bit i
-            y = int(sbox.table[x])
-            y_flip = int(sbox.table[x ^ mask])
-            diff = y ^ y_flip
-            # Contar cambios por bit de salida
+            y      = _parse(sbox.table[x])
+            y_flip = _parse(sbox.table[x ^ mask])
+            diff   = y ^ y_flip
             for j in range(m):
                 sac_counts[i, j] += (diff >> j) & 1
 

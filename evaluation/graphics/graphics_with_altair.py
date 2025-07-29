@@ -191,6 +191,7 @@ def compare_mixing_times_altair(
     return chart
 
 
+
 def compare_mixing_times_spectrals_altair(
     specs,
     epsilons=None,
