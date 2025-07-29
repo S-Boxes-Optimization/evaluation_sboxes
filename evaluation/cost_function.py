@@ -1,10 +1,9 @@
 import numpy as np
-from numba import jit
-
+#from numba import jit
 from evaluation import uniformity
 from sboxes import SBox
 
-@jit(nopython=True)
+#@jit(nopython=True)
 def evaluate(table: np.ndarray = None, sbox: SBox = None, input_size: int = None, output_size: int = None) -> np.floating:
     if table is None and sbox is None:
         raise ValueError("Either table or sbox must be provided")

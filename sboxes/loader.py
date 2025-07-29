@@ -29,6 +29,6 @@ def load(path: str):
             raise ValueError("Table values must be greater than or equal to 0 and less than or equal to 2^%d" % data["output_size"])
         final_table[idx] = output
 
-    sbox = SBox(data["input_size"], data["output_size"], final_table, data["name"])
+    sbox = SBox(data["input_size"], data["output_size"], final_table)
 
     return sbox

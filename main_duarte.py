@@ -1,4 +1,4 @@
-# compare_relaxation_and_bounds.py
+m# compare_relaxation_and_bounds.py
 
 import numpy as np
 import math
@@ -113,8 +113,8 @@ def main():
     """
 
 
-from evaluation.markov_chains.test_markov_chain import main as run_markov_tests
-from evaluation.markov_chains.all_test_markov_chains import main as run_markov_tests_all
+from evaluation.graphics.test_markov_chain import main as run_markov_tests
+from evaluation.graphics.all_test_markov_chains import main as run_markov_tests_all
 from evaluation.avalanche_criterion   import print_avalanche_summary, plot_avalanche_matrix
 from sboxes.loader                    import load as load_sbox
 from evaluation.identity_sbox         import IdentitySBox
@@ -125,7 +125,7 @@ def main_markov():
     
 from sboxes.loader import load as load_sbox
 from evaluation.identity_sbox import IdentitySBox
-from evaluation.markov_chains.all_test_markov_chains import (
+from evaluation.graphics.all_test_markov_chains import (
     compare_tv_distance,
     compare_max_probability,
     compare_mixing_times

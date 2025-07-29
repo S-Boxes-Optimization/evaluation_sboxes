@@ -1,7 +1,7 @@
 import numpy as np
-from numba import jit
+#from numba import jit
 
-@jit(nopython=True)
+#@jit(nopython=True)
 def dot(u: int, v: int) -> int:
     c = 0
     x = u & v
@@ -10,7 +10,7 @@ def dot(u: int, v: int) -> int:
         c += 1
     return c % 2
 
-@jit(nopython=True)
+#@jit(nopython=True)
 def fwht_inplace(a: np.ndarray):
     n = a.shape[0]
     h = 1
@@ -23,7 +23,7 @@ def fwht_inplace(a: np.ndarray):
                 a[j + h] = x - y
         h *= 2
 
-@jit(nopython=True, fastmath=True)
+#@jit(nopython=True, fastmath=True)
 def evaluate_table(table: np.ndarray, input_size: int) -> float:
     maximum = 0.0
     size = 1 << input_size
@@ -48,6 +48,6 @@ def evaluate_table(table: np.ndarray, input_size: int) -> float:
     return nonlinearity
 
 
-@jit(nopython=True)
+#@jit(nopython=True)
 def evaluate(sbox):
     return evaluate_table(sbox.table, sbox.input_size)

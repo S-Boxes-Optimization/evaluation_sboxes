@@ -11,7 +11,7 @@ from tabulate import tabulate
 
 from sboxes.loader import load as load_sbox
 from evaluation.markov_chains.basic_markov_chain import create_transition_matrix, DifferentialMarkovChain
-from evaluation.markov_chains.all_test_markov_chains import test_tv_distance, test_max_probability
+from evaluation.graphics.all_test_markov_chains import test_tv_distance, test_max_probability
 from evaluation.avalanche_criterion import IdentitySBox
 
 
