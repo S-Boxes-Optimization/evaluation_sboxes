@@ -144,6 +144,7 @@ def compare_mixing_times_altair(
                 'Método':      'iterative',
                 'Mixing time': chain.mixing_time_iterative(epsilon=eps, max_steps=max_steps)
             })
+            print(f"{name} with ε={eps}: {chain.mixing_time_iterative(epsilon=eps, max_steps=max_steps)}")
             """
             records.append({
                 'ε':           eps,
@@ -183,7 +184,7 @@ def compare_mixing_times_altair(
         .properties(
             width=600,
             height=400,
-            title='Mixing time iterativo vs cota espectral'
+            title='Mixing time vs bound'
         )
         .interactive()
     )
